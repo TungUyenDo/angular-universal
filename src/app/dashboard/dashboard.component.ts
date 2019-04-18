@@ -17,16 +17,19 @@ export class DashboardComponent implements OnInit {
     public viewContainerRef: ViewContainerRef
   ) { }
 
+
+  /**for TemplateRef */
   @ViewChild("TemplateRef") TemplateRef: TemplateRef<any>;
 
   ngAfterViewInit() {
-    console.log('TemplateRef',this.TemplateRef)
-    console.log('viewContainerRef',this.viewContainerRef);
+    // console.log('TemplateRef',this.TemplateRef)
+    // console.log('viewContainerRef',this.viewContainerRef);
 
     this.viewContainerRef.createEmbeddedView(this.TemplateRef);
 
-    console.log('viewContainerRef',this.viewContainerRef);
+    // console.log('viewContainerRef',this.viewContainerRef);
   }
+  /**for TemplateRef */
 
   ngOnInit() {
     this.getHeroes();
