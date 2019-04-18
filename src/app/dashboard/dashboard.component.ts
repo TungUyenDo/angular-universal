@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef, ViewChild,TemplateRef,ViewContainerRef } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
@@ -9,11 +9,28 @@ import { HeroService } from '../hero.service';
 })
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
+  isBool:boolean = false;
 
-  constructor(private heroService: HeroService) { }
+  constructor(
+    private heroService: HeroService, 
+    private elementRef  : ElementRef,
+    public viewContainerRef: ViewContainerRef
+  ) { }
+
+  @ViewChild("TemplateRef") TemplateRef: TemplateRef<any>;
+
+  ngAfterViewInit() {
+    console.log('TemplateRef',this.TemplateRef)
+    console.log('viewContainerRef',this.viewContainerRef);
+
+    this.viewContainerRef.createEmbeddedView(this.TemplateRef);
+
+    console.log('viewContainerRef',this.viewContainerRef);
+  }
 
   ngOnInit() {
     this.getHeroes();
+    console.log('elementRef',this.elementRef)
   }
 
   getHeroes(): void {

@@ -6,6 +6,27 @@
       <h4>{{hero.name}}</h4>
     </div>
   </a>
+  <div class="clearfix"></div>
 </div>
 
+
+
 <app-hero-search></app-hero-search>
+
+
+<button (click)="isBool = !isBool">Display ng-template</button>
+
+<div *ngIf="isBool">this is ng-template *ngIf</div>
+
+<ng-template [ngIf]="isBool">
+  <div>
+      this is ng-template [ngIf]
+  </div>
+</ng-template>
+
+<ng-template #TemplateRef>
+  <div>
+      this is ng-template #tpl
+  </div>
+</ng-template>
+
